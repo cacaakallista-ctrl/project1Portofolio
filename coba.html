@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portofolio | Caca</title>
+  <meta name="description" content="Portofolio pribadi — proyek, keahlian, dan kontak." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Ikon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>✨</text></svg>">
+  <!-- SEO struktur data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nama Kamu",
+    "url": "https://namakamu.github.io",
+    "sameAs": ["https://github.com/username", "https://www.linkedin.com/in/username/"]
+  }
+  </script>
+  <style>
+    :root{
+      --bg: #0b1220;           /* gelap */
+      --card: #0f172a;
+      --muted: #94a3b8;
+      --text: #e2e8f0;
+      --brand: #0ea5e9;
+      --brand-2:#22d3ee;
+      --ring: rgba(34,211,238,.35);
+      --shadow: 0 10px 30px rgba(2,8,23,.35);
+      --radius: 18px;
+    }
+    :root.light{
+      --bg: #f7fafc;
+      --card:#ffffff;
+      --muted:#475569;
+      --text:#0f172a;
+      --brand:#0284c7;
+      --brand-2:#06b6d4;
+      --ring: rgba(14,165,233,.25);
+      --shadow: 0 8px 24px rgba(15,23,42,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg); color: var(--text);
+    }
+    a{color:inherit}
+    img{max-width:100%; display:block}
+    .container{width:min(1100px, 92%); margin-inline:auto}
+    .btn{display:inline-flex; align-items:center; gap:.6rem; padding:.8rem 1rem; border-radius: calc(var(--radius) - 6px); font-weight:600; text-decoration:none; background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:white; box-shadow: var(--shadow); border:0; cursor:pointer}
+    .btn.ghost{background:transparent; outline:1px solid rgba(148,163,184,.25); color:var(--text)}
+    .btn:focus-visible{outline:3px solid var(--ring); outline-offset:3px}
+    .nav{position:sticky; top:0; z-index:40; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg) 85%, transparent); border-bottom:1px solid rgba(148,163,184,.15)}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.8rem 0}
+    .brand{display:flex; align-items:center; gap:.6rem; font-weight:800}
+    .brand .logo{inline-size:34px; block-size:34px; border-radius:10px; display:grid; place-items:center; background:radial-gradient(60% 60% at 30% 20%, var(--brand-2), transparent), linear-gradient(135deg, var(--brand), #3b82f6)}
+    .nav a{opacity:.9; text-decoration:none; font-weight:600}
+    .nav ul{display:flex; gap:1rem; list-style:none; margin:0; padding:0}
+    .theme-toggle{inline-size:42px; block-size:42px; border-radius:12px; border:1px solid rgba(148,163,184,.25); background:var(--card); display:grid; place-items:center; cursor:pointer}
+
+    /* Hero */
+    .hero{padding: 72px 0 36px}
+    .hero-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap: 32px; align-items:center}
+    .hero h1{font-size: clamp(2rem, 4vw + .6rem, 3.4rem); line-height:1.05; margin:.2rem 0 1rem}
+    .hero p{color: var(--muted); font-size:1.06rem}
+    .avatar{border-radius: 22px; overflow:hidden; box-shadow: var(--shadow); border:1px solid rgba(148,163,184,.18)}
+
+    /* Section */
+    section{padding: 56px 0}
+    .section-head{display:flex; align-items:end; justify-content:space-between; gap:1rem; margin-bottom: 22px}
+    .section-head h2{font-size: clamp(1.4rem, 2vw + .4rem, 2rem); margin:0}
+    .grid{display:grid; gap: 18px}
+    .grid.cols-3{grid-template-columns: repeat(3, 1fr)}
+    .grid.cols-2{grid-template-columns: repeat(2, 1fr)}
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns: 1fr}
+      .grid.cols-3{grid-template-columns: 1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .grid.cols-3, .grid.cols-2{grid-template-columns: 1fr}
+    }
+
+    /* Cards */
+    .card{background:var(--card); border:1px solid rgba(148,163,184,.18); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow)}
+    .card h3{margin:8px 0 6px; font-size:1.05rem}
+    .muted{color:var(--muted)}
+    .tag{display:inline-flex; align-items:center; gap:.4rem; padding:.36rem .6rem; border-radius:999px; border:1px solid rgba(148,163,184,.25); font-size:.84rem}
+    .tags{display:flex; flex-wrap:wrap; gap:.5rem}
+
+    /* Timeline */
+    .timeline{position:relative; padding-left:22px}
+    .timeline:before{content:""; position:absolute; inset:0 auto 0 8px; width:2px; background:linear-gradient(var(--brand), transparent)}
+    .t-item{position:relative; margin-bottom:18px}
+    .t-item::marker{content:none}
+    .t-item .dot{position:absolute; left:-22px; top:.25rem; width:12px; height:12px; border-radius:50%; background: var(--brand); box-shadow:0 0 0 4px rgba(14,165,233,.2)}
+
+    /* Footer */
+    footer{padding: 42px 0; border-top:1px solid rgba(148,163,184,.15)}
+    .footer-inner{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem}
+
+    /* Utilities */
+    .row{display:flex; gap:.8rem; flex-wrap:wrap}
+    .center{text-align:center}
+    .mb-1{margin-bottom:.5rem}
+    .mb-2{margin-bottom:1rem}
+    .mb-3{margin-bottom:1.4rem}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="brand" aria-label="Ke bagian atas">
+        <span class="logo" aria-hidden="true"> </span>
+        <span>Kallista Cahya Fadantya</span>
+      </a>
+      <ul>
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#skills">Keahlian</a></li>
+        <li><a href="#projects">Proyek</a></li>
+        <li><a href="#experience">Pengalaman</a></li>
+        <li><a href="#contact">Kontak</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle tema terang/gelap">🌗</button>
+    </div>
+  </nav>
+
+  <header id="home" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="tag mb-1">Tersedia untuk freelance/part-time</p>
+        <h1>Halo, saya <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent">Caca</span> —
+          <wbr>seorang <strong>Siswi SMK Negeri 8 Malang</strong></h1>
+        <p class="mb-3"></p>
+        <div class="row">
+          <a class="btn" href="#projects">Lihat Proyek</a>
+          <a class="btn ghost" href="./CV_NamaKamu.pdf" download>Unduh CV</a>
+        </div>
+      </div>
+      <div class="avatar">
+        <img src="webcam-toy-photo41.jpg" alt="Foto/ilustrasi profil" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Tentang -->
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <h2>Tentang Saya</h2>
+        </div>
+        <div class="card">
+          <p class="mb-2">Siswi RPL yang suka JavaScript. Target saya: membuat aplikasi yang <em>usable</em> dan punya dampak. Saat ini belajar Dart flutter, dan NodeJS.</p>
+          <div class="tags">
+            <span class="tag">📍 Indonesia</span>
+            <span class="tag">🎓 RPL</span>
+            <span class="tag">🛠️ Desain</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Keahlian -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <h2>Keahlian & Alat</h2>
+          <a class="btn ghost" href="#contact">Ajak Kolaborasi</a>
+        </div>
+        <div class="grid cols-3">
+          <div class="card">
+            <h3>Frontend</h3>
+            <p class="muted mb-1">HTML • CSS • JS • Flutter Web</p>
+            <div class="tags">
+              <span class="tag">Responsive</span>
+              <span class="tag">A11y</span>
+              <span class="tag">SPA</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Backend</h3>
+            <p class="muted mb-1">Node.js • REST API </p>
+            <div class="tags">
+              <span class="tag">JWT</span>
+              <span class="tag">Prisma/ORM</span>
+              <span class="tag">Postman</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Tools</h3>
+            <p class="muted mb-1"> VS Code • NeathBeans</p>
+            <div class="tags">
+              <span class="tag">Git Flow</span>
+              <span class="tag">Testing</span>
+              <span class="tag">Deploy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyek -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <h2>Proyek Pilihan</h2>
+          <a class="btn ghost" href="https://github.com/username" target="_blank" rel="noreferrer">GitHub Saya ↗</a>
+        </div>
+        <div class="grid cols-3">
+          <!-- Card Proyek -->
+          <article class="card">
+            <img src="https://picsum.photos/seed/app1/800/500" alt="Tangkapan layar proyek 1" style="border-radius:12px" />
+            <h3>Aplikasi To-Do (Flutter)</h3>
+            <p class="muted">To-Do berbasis Flutter dengan penyimpanan lokal & filter status.</p>
+            <div class="tags mb-2">
+              <span class="tag">Flutter</span>
+              <span class="tag">Dart</span>
+              <span class="tag">Local DB</span>
+            </div>
+            <div class="row">
+              <a class="btn" href="#" target="_blank" rel="noreferrer">Demo</a>
+              <a class="btn ghost" href="#" target="_blank" rel="noreferrer">Kode</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://picsum.photos/seed/app2/800/500" alt="Tangkapan layar proyek 2" style="border-radius:12px" />
+            <h3>REST API Buku</h3>
+            <p class="muted">API CRUD buku dengan autentikasi JWT & validasi.</p>
+            <div class="tags mb-2">
+              <span class="tag">Node.js</span>
+              <span class="tag">Express</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+            <div class="row">
+              <a class="btn" href="#" target="_blank" rel="noreferrer">Dokumentasi</a>
+              <a class="btn ghost" href="#" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://picsum.photos/seed/app3/800/500" alt="Tangkapan layar proyek 3" style="border-radius:12px" />
+            <h3>Website Portofolio</h3>
+            <p class="muted">Situs statis cepat dengan aksesibilitas & SEO dasar.</p>
+            <div class="tags mb-2">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">Vanilla JS</span>
+            </div>
+            <div class="row">
+              <a class="btn" href="#" target="_blank" rel="noreferrer">Live</a>
+              <a class="btn ghost" href="#" target="_blank" rel="noreferrer">Kode</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pengalaman -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <h2>Pengalaman & Pendidikan</h2>
+        </div>
+        <ol class="timeline">
+          <li class="t-item">
+            <span class="dot" aria-hidden="true"></span>
+            <div class="card">
+              <h3>Institut Teknologi Bandung</h3>
+              <p class="muted">Jun 2027 — S1 • Bandung</p>
+              <p>Rencana saya ingin meningkatkan keaahlian IT saya di ITB.</p>
+            </div>
+          </li>
+          <li class="t-item">
+            <span class="dot" aria-hidden="true"></span>
+            <div class="card">
+              <h3>Rekayasa Perangkat Lunak — SMK Negeri 8 Malang</h3>
+              <p class="muted">2024 — Sekarang</p>
+              <p>Fokus: Pemrograman web & mobile, basis data, jaringan, dan manajemen proyek.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Kontak</h2>
+          <p class="muted">Siap ngobrol tentang proyek, kolaborasi, atau peluang kerja.</p>
+        </div>
+        <div class="grid cols-2">
+          <form class="card" onsubmit="sendMessage(event)">
+            <label class="mb-1" for="name">Nama</label>
+            <input id="name" name="name" required class="input mb-2" placeholder="Nama lengkap" />
+
+            <label class="mb-1" for="email">Email</label>
+            <input id="email" name="email" type="email" required class="input mb-2" placeholder="email@.com" />
+
+            <label class="mb-1" for="message">Pesan</label>
+            <textarea id="message" name="message" rows="5" required class="input mb-2" placeholder="Tulis pesanmu..."></textarea>
+
+            <button class="btn" type="submit">Kirim Pesan</button>
+            <p id="formStatus" class="muted" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="card">
+            <h3>Info</h3>
+            <p class="muted">Balas paling cepat via email & WhatsApp.</p>
+            <div class="tags mb-2">
+              <a class="tag" href="mailto:email@cacaakallista.com">📧 email@cacaakallista.com</a>
+              <a class="tag" href="https://wa.me/qr/FTMFDDOETP2NL1" target="_blank" rel="noreferrer">💬 WhatsApp</a>
+              <a class="tag" href="https://www.instagram.com/fadantyaa?igsh=Y2Vrd20zZmVuanBz" target="_blank" rel="noreferrer">📷 Instagram</a>
+            </div>
+            <p class="muted">Tersedia juga CV dalam format PDF.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> cacaAa • Dibuat dengan ❤ dan vanilla HTML/CSS/JS</p>
+      <div class="row">
+        <a class="tag" href="#home">⬆️ Kembali ke atas</a>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    /* Input style terpisah agar mudah dicari */
+    .input{width:100%; padding:.8rem 1rem; background:var(--bg); color:var(--text); border-radius:12px; border:1px solid rgba(148,163,184,.28)}
+    .input:focus{outline:3px solid var(--ring); outline-offset:2px}
+  </style>
+
+  <script>
+    // Tahun dinamis
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Tema terang/gelap (persist di localStorage)
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const stored = localStorage.getItem('theme');
+    if(stored === 'light') root.classList.add('light');
+    toggle.addEventListener('click', ()=>{
+      root.classList.toggle('light');
+      localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
+    });
+
+    // Handler form (dummy, tanpa backend)
+    function sendMessage(e){
+      e.preventDefault();
+      const form = e.target;
+      const data = Object.fromEntries(new FormData(form).entries());
+      const out = `Terima kasih, ${data.name}! Pesanmu sudah tercatat.`;
+      document.getElementById('formStatus').textContent = out;
+      form.reset();
+    }
+  </script>
+</body>
+</html>
